@@ -1,0 +1,63 @@
+:root{
+  --bg:#0b1220; --accent:#2563eb; --taskbar:#071022; --glass-opacity:0.06; --glass-blur:10px; --text:#e6eef8; --muted:#97a6bf; --win-radius:10px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+html,body{height:100%;margin:0}
+body{background:linear-gradient(180deg,var(--bg),#071422);color:var(--text);overflow:hidden}
+
+/* Desktop */
+#desktop{position:absolute;inset:0;padding:20px;display:flex;flex-wrap:wrap;gap:18px;align-content:flex-start;background-size:cover;background-position:center}
+.icon{width:88px;text-align:center;font-size:13px;color:var(--muted);cursor:pointer;touch-action:none}
+.icon .glyph{width:88px;height:88px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,var(--glass-opacity)), rgba(255,255,255,0.01));backdrop-filter:blur(var(--glass-blur));display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+
+/* Taskbar */
+#taskbar{position:fixed;left:0;right:0;bottom:0;height:48px;background:linear-gradient(180deg,var(--taskbar),rgba(0,0,0,0.4));display:flex;align-items:center;padding:0 8px;gap:8px;box-shadow:0 -4px 16px rgba(2,6,23,0.6)}
+#startBtn{width:42px;height:34px;border-radius:8px;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;cursor:pointer}
+#taskbar .dock{display:flex;gap:8px;flex:1}
+.task-item{min-width:36px;height:34px;border-radius:8px;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.task-item:hover{transform:translateY(-3px)}
+#tray{display:flex;align-items:center;gap:8px;color:var(--muted);padding-right:8px}
+
+/* Start menu */
+#startMenu{position:fixed;left:12px;bottom:56px;width:420px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:12px;padding:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6);display:none}
+.start-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+#searchStart{flex:1;margin-left:8px;padding:6px;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:var(--text)}
+.start-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}
+.app-tile{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:10px;cursor:pointer;text-align:center}
+.theme-row{display:flex;gap:8px;align-items:center}
+
+/* Windows */
+#windows{position:absolute;inset:0;pointer-events:none}
+.window{position:absolute;width:560px;height:360px;background:linear-gradient(180deg, rgba(255,255,255,var(--glass-opacity)), rgba(0,0,0,0.06));border-radius:var(--win-radius);box-shadow:0 8px 40px rgba(2,6,23,0.5);overflow:hidden;display:flex;flex-direction:column;pointer-events:auto;backdrop-filter:blur(var(--glass-blur));transition:transform .12s ease, filter .12s ease}
+.titlebar{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;user-select:none;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+.title{display:flex;align-items:center;gap:10px}
+.controls{display:flex;gap:8px}
+.ctrl{width:36px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.content{flex:1;padding:12px;overflow:auto}
+
+/* Notepad */
+.notepad textarea{width:100%;height:100%;border:0;background:transparent;color:var(--text);resize:none;font-family:monospace;font-size:14px}
+
+/* Terminal */
+.terminal{background:#071023;color:#9fe7ff;font-family:monospace;padding:8px;height:100%;display:flex;flex-direction:column}
+.term-output{flex:1;overflow:auto;margin-bottom:8px}
+.term-input{display:flex;gap:8px}
+.term-input input{flex:1;padding:8px;border-radius:6px;border:0;background:#001223;color:#aeefff}
+
+/* Explorer */
+.file-list{display:flex;flex-direction:column;gap:8px}
+.file-item{padding:8px;border-radius:6px;background:rgba(255,255,255,0.02);display:flex;justify-content:space-between}
+
+/* Calculator */
+.calc{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.calc button{padding:12px;border-radius:8px;border:0;cursor:pointer}
+
+/* Notifications & preview */
+.window-preview{box-shadow:0 12px 30px rgba(0,0,0,0.6);border-radius:8px;overflow:hidden}
+.notification-badge{position:fixed;bottom:58px;right:18px;background:var(--accent);color:#000;padding:8px;border-radius:8px;font-weight:600}
+
+/* Small helpers */
+.hidden{display:none}
+.resizer{position:absolute;right:8px;bottom:8px;width:18px;height:18px;cursor:nwse-resize;opacity:0.6}
+.window.inactive{filter:grayscale(0.15) brightness(0.85)}
+@media (max-width:640px){#startMenu{width:320px}}
